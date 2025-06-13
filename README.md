@@ -2,7 +2,7 @@
 
 This guide will help you quickly set up a ZSH terminal with improved information display and the ability to extend functionality using plugins.
 
-## Preparing the system
+#### Preparing the system
 Update system packages:
 ```bash
 # Для Ubuntu/Debian:
