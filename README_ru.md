@@ -12,13 +12,13 @@ sudo apt update && sudo apt upgrade -y
 sudo dnf update -y
 ```
 #### Установка необходимых компонентов
-Установим git и zsh:
+Установим git, zsh и wget:
 ```bash
 # Для Ubuntu/Debian:
-sudo apt install -y git zsh
+sudo apt install -y git zsh wget
 
 # Для Fedora:
-sudo dnf install -y git zsh
+sudo dnf install -y git zsh wget
 ```
 
 #### Настройка ZSH
@@ -40,11 +40,20 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```bash
 cd ~/ && mkdir tmp && cd tmp
 ```
-2. Скачиваем шрифты с этого же репозитория и устанавливаем их:
+2. Клонируем репозиторий и заходим в него:
 ```bash
 git clone https://github.com/sshyta/setting_zsh.git
+cd setting_zsh
 ```
-3. Устанавливаем тему powerlevel10k:
+3. Даем права доступа к файлу, делая его исполняемым:
+```bash
+chmod +x fonts_install.sh
+```
+4. Запускаем его:
+```bash
+./fonts_install.sh
+```
+5. Устанавливаем тему powerlevel10k:
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
