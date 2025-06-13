@@ -54,5 +54,5 @@ You need to edit the `~/.zshrc` file and replace the value of the `ZSH_THEME` ke
 Launching the editor:
 `nano ~/.zshrc`
 
-To save changes, press Ctrl + X, Ctrl + Y, then press Enter
+To save changes, press Ctrl + X, Y, then press Enter
 Restart the terminal
