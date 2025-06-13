@@ -1,9 +1,9 @@
-# Установка и настройка ZSH в Linux (Fedora/Ubuntu)
+# Installing and Configuring ZSH on Linux (Fedora/Ubuntu)
 
-Данное руководство поможет быстро настроить терминал ZSH с улучшенным отображением информации и возможностью расширения функционала с помощью плагинов.
+This guide will help you quickly set up a ZSH terminal with improved information display and the ability to extend functionality using plugins.
 
-## Подготовка системы
-Обновите пакеты системы:
+## Preparing the system
+Update system packages:
 ```bash
 # Для Ubuntu/Debian:
 sudo apt update && sudo apt upgrade -y
@@ -11,8 +11,8 @@ sudo apt update && sudo apt upgrade -y
 # Для Fedora:
 sudo dnf update -y
 ```
-#### Установка необходимых компонентов
-Установим git и zsh:
+#### Installing the required components
+Install git and zsh:
 ```bash
 # Для Ubuntu/Debian:
 sudo apt install -y git zsh
@@ -21,40 +21,38 @@ sudo apt install -y git zsh
 sudo dnf install -y git zsh
 ```
 
-#### Настройка ZSH
-1. Создайте конфигурационный файл (если он не создался автоматически):
+#### Configuring ZSH
+1. Create a configuration file (if it is not created automatically):
 ```bash
 touch ~/.zshrc
 ```
-2. Назначим zsh коммандной оболочкой по умолчанию в нашей системе:
+2. Let's set zsh as the default command shell on our system:
 ```bash
 chsh -s $(which zsh)
 ```
-3. Устанавливаем популярный фреймворк с открытым исходнам кодом 
-для управления и улудшения конфигурации оболочки zsh:
+3. Install a popular open source framework for managing and improving the zsh shell configuration:
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-#### Установка темы Powerlevel10k
-1. Создаем временную директорию для загрузки файлов:
+#### Installing the Powerlevel10k theme
+1. Create a temporary directory for downloading files:
 ```bash
 cd ~/ && mkdir tmp && cd tmp
 ```
-2. Скачиваем шрифты с этого же репозитория и устанавливаем их:
+2. Download the fonts from the same repository and install them:
 ```bash
 git clone https://github.com/sshyta/setting_zsh.git
 ```
-3. Устанавливаем тему powerlevel10k:
+3. Install the powerlevel10k theme:
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
-Необходимо отредактировать файл `~/.zshrc` заменить значение ключа `ZSH_THEME` на :
+You need to edit the `~/.zshrc` file and replace the value of the `ZSH_THEME` key with:
 `ZSH_THEME="powerlevel10k/powerlevel10k"`
 
-Запуск редактора:
+Launching the editor:
 `nano ~/.zshrc`
 
-Для созранения изменений нажимаем Ctrl + X, Ctrl + Y, затем нажимаем Enter
-
-Перезапускаем терминал
+To save changes, press Ctrl + X, Ctrl + Y, then press Enter
+Restart the terminal
