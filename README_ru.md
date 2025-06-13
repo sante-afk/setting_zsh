@@ -11,7 +11,7 @@ sudo apt update && sudo apt upgrade -y
 # Для Fedora:
 sudo dnf update -y
 ```
-#### Установка необходимых компонентов
+## Установка необходимых компонентов
 Установим git, zsh и wget:
 ```bash
 # Для Ubuntu/Debian:
@@ -21,7 +21,7 @@ sudo apt install -y git zsh wget
 sudo dnf install -y git zsh wget
 ```
 
-#### Настройка ZSH
+## Настройка ZSH
 1. Создайте конфигурационный файл (если он не создался автоматически):
 ```bash
 touch ~/.zshrc
@@ -35,7 +35,7 @@ chsh -s $(which zsh)
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-#### Установка темы Powerlevel10k
+## Установка темы Powerlevel10k
 1. Создаем временную директорию для загрузки файлов:
 ```bash
 cd ~/ && mkdir tmp && cd tmp
@@ -59,7 +59,9 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 ```
 
 Необходимо отредактировать файл `~/.zshrc` заменить значение ключа `ZSH_THEME` на :
+```bash
 `ZSH_THEME="powerlevel10k/powerlevel10k"`
+```
 
 Запуск редактора:
 `nano ~/.zshrc`
