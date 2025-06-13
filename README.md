@@ -2,7 +2,7 @@
 
 This guide will help you quickly set up a ZSH terminal with improved information display and the ability to extend functionality using plugins.
 
-#### Preparing the system
+## Preparing the system
 Update system packages:
 ```bash
 # Для Ubuntu/Debian:
@@ -11,7 +11,7 @@ sudo apt update && sudo apt upgrade -y
 # Для Fedora:
 sudo dnf update -y
 ```
-#### Installing the required components
+## Installing the required components
 Install git and zsh:
 ```bash
 # Для Ubuntu/Debian:
@@ -21,7 +21,7 @@ sudo apt install -y git zsh
 sudo dnf install -y git zsh
 ```
 
-#### Configuring ZSH
+## Configuring ZSH
 1. Create a configuration file (if it is not created automatically):
 ```bash
 touch ~/.zshrc
@@ -34,7 +34,7 @@ chsh -s $(which zsh)
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-#### Installing the Powerlevel10k theme
+## Installing the Powerlevel10k theme
 1. Create a temporary directory for downloading files:
 ```bash
 cd ~/ && mkdir tmp && cd tmp
