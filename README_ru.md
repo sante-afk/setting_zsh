@@ -19,7 +19,7 @@ sudo dnf update -y
 https://www.macports.org/install.php
 ```
 
-#### Установка необходимых компонентов
+## Установка необходимых компонентов
 Установим git, zsh и wget:
 ```bash
 # Для Ubuntu/Debian:
@@ -35,7 +35,7 @@ brew install git zsh wget
 sudo port install git zsh wget
 ```
 
-#### Настройка ZSH
+## Настройка ZSH
 1. Создайте конфигурационный файл (если он не создался автоматически):
 ```bash
 touch ~/.zshrc
@@ -50,7 +50,7 @@ chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-#### Установка темы Powerlevel10k
+## Установка темы Powerlevel10k
 1. Создаем временную директорию для загрузки файлов:
 ```bash
 cd ~/ && mkdir tmp && cd tmp
@@ -74,7 +74,9 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 ```
 
 Необходимо отредактировать файл `~/.zshrc` заменить значение ключа `ZSH_THEME` на :
+```bash
 `ZSH_THEME="powerlevel10k/powerlevel10k"`
+```
 
 Запуск редактора:
 `nano ~/.zshrc`

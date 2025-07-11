@@ -19,7 +19,7 @@ sudo dnf update -y
 https://www.macports.org/install.php
 ```
 
-#### Installing the required components
+## Installing the required components
 Install git, zsh and wget:
 ```bash
 # For Ubuntu/Debian:
@@ -35,7 +35,7 @@ brew install git zsh wget
 sudo port install git zsh wget
 ```
 
-#### Setting up ZSH
+## Configuring ZSH
 1. Create a configuration file (if it was not created automatically):
 ```bash
 touch ~/.zshrc
@@ -50,7 +50,7 @@ for managing and improving the zsh shell configuration:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-#### Installing the Powerlevel10k theme
+## Installing Powerlevel10k theme
 1. Create a temporary directory for downloading files:
 ```bash
 cd ~/ && mkdir tmp && cd tmp
@@ -73,12 +73,11 @@ chmod +x fonts_install.sh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
-You need to edit the `~/.zshrc` file and replace the key value `ZSH_THEME` to:
+You need to edit the `~/.zshrc` file and replace the value of the `ZSH_THEME` key with:
 `ZSH_THEME="powerlevel10k/powerlevel10k"`
 
 Launch editor:
 `nano ~/.zshrc`
 
 To save changes, press Ctrl + X, Ctrl + Y, then press Enter
-
-Restart terminal
+Restart the terminal
