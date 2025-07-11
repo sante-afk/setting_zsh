@@ -1,6 +1,7 @@
-# Установка и настройка ZSH в Linux (Fedora/Ubuntu)
+# Установка и настройка ZSH в (Fedora/Ubuntu/macOS)
 
-Данное руководство поможет быстро настроить терминал ZSH с улучшенным отображением информации и возможностью расширения функционала с помощью плагинов.
+Данное руководство поможет быстро настроить терминал ZSH с улучшенным отображением 
+информации и возможностью расширения функционала с помощью плагинов.
 
 ## Подготовка системы
 Обновите пакеты системы:
@@ -10,7 +11,14 @@ sudo apt update && sudo apt upgrade -y
 
 # Для Fedora:
 sudo dnf update -y
+
+# Для macOS устанавливаем Homebrew:
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# MacPorts (для старых версий macOS)
+https://www.macports.org/install.php
 ```
+
 #### Установка необходимых компонентов
 Установим git, zsh и wget:
 ```bash
@@ -19,6 +27,12 @@ sudo apt install -y git zsh wget
 
 # Для Fedora:
 sudo dnf install -y git zsh wget
+
+# Для macOS
+brew install git zsh wget
+
+# MacPorts (для старых версий macOS)
+sudo port install git zsh wget
 ```
 
 #### Настройка ZSH
@@ -35,6 +49,7 @@ chsh -s $(which zsh)
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+
 #### Установка темы Powerlevel10k
 1. Создаем временную директорию для загрузки файлов:
 ```bash
