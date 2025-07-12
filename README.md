@@ -1,7 +1,6 @@
-# Installing and configuring ZSH in (Fedora/Ubuntu/macOS)
+# Installing and configuring ZSH in (Fedora/Ubuntu/NixOS/macOS) 🫩
 
-This guide will help you quickly set up a ZSH terminal with improved 
-display of information and the ability to expand functionality using plugins.
+This guide will help you quickly set up a ZSH terminal with improved display of information and the ability to expand functionality using plugins.
 
 ## Preparing the system
 Update system packages:
@@ -12,6 +11,10 @@ sudo apt update && sudo apt upgrade -y
 # For Fedora:
 sudo dnf update -y
 
+# For NixOS, go to the configuration file:
+cd /etc/nixos/
+nano configuration.nix
+
 # For macOS, install Homebrew:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -19,7 +22,7 @@ sudo dnf update -y
 https://www.macports.org/install.php
 ```
 
-## Installing the required components
+## Installing the necessary components
 Install git, zsh and wget:
 ```bash
 # For Ubuntu/Debian:
@@ -28,14 +31,22 @@ sudo apt install -y git zsh wget
 # For Fedora:
 sudo dnf install -y git zsh wget
 
+# For NixOS, add a line and rebuild:
+environment.systemPackages = with pkgs; [
+zsh
+];
+
+# Rebuild
+sudo nixos-rebuild switch
+
 # For macOS
 brew install git zsh wget
 
-# MacPorts (for older macOS versions)
+# MacPorts (for older versions of macOS)
 sudo port install git zsh wget
 ```
 
-## Configuring ZSH
+## Setting up ZSH
 1. Create a configuration file (if it was not created automatically):
 ```bash
 touch ~/.zshrc
@@ -44,13 +55,31 @@ touch ~/.zshrc
 ```bash
 chsh -s $(which zsh)
 ```
-3. Install a popular open-source framework
-for managing and improving the zsh shell configuration:
+>For NixOS, to set zsh as the default shell,
+>add a few lines to the configuration file and rebuild.
+```bash
+# Set the shell at the system level
+programs.zsh.enable = true;
+
+# Change the shell for all users
+users.defaultUserShell = pkgs.zsh;
+
+# Change the shell for a specific user
+users.users.<user_name> = {
+shell = pkgs.zsh;
+useDefaultShell = true;
+};
+
+# Rebuild
+sudo nixos-rebuild switch
+```
+3. Install the popular Oh My Zsh plugin
+to manage and improve the zsh shell configuration:
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-## Installing Powerlevel10k theme
+## Installing the Powerlevel10k theme
 1. Create a temporary directory for downloading files:
 ```bash
 cd ~/ && mkdir tmp && cd tmp
@@ -66,7 +95,7 @@ chmod +x fonts_install.sh
 ```
 4. Run it:
 ```bash
-./fonts_install.sh
+zsh ./fonts_install.sh
 ```
 5. Install the powerlevel10k theme:
 ```bash
@@ -74,10 +103,13 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 ```
 
 You need to edit the `~/.zshrc` file and replace the value of the `ZSH_THEME` key with:
+```bash
 `ZSH_THEME="powerlevel10k/powerlevel10k"`
+```
 
-Launch editor:
+Launch the editor:
 `nano ~/.zshrc`
 
 To save changes, press Ctrl + X, Ctrl + Y, then press Enter
+
 Restart the terminal

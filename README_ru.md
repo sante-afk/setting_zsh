@@ -1,4 +1,4 @@
-# Установка и настройка ZSH в (Fedora/Ubuntu/macOS)
+# Установка и настройка ZSH в (Fedora/Ubuntu/NixOS/macOS) 🫩
 
 Данное руководство поможет быстро настроить терминал ZSH с улучшенным отображением 
 информации и возможностью расширения функционала с помощью плагинов.
@@ -11,6 +11,10 @@ sudo apt update && sudo apt upgrade -y
 
 # Для Fedora:
 sudo dnf update -y
+
+# Для NixOS заходим в конфигурационный файл:
+cd /etc/nixos/
+nano configuration.nix
 
 # Для macOS устанавливаем Homebrew:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -28,6 +32,14 @@ sudo apt install -y git zsh wget
 # Для Fedora:
 sudo dnf install -y git zsh wget
 
+# Для NixOS добавьте строчку и выполните ребилд:
+environment.systemPackages = with pkgs; [
+    zsh
+];
+
+# Ребилд
+sudo nixos-rebuild switch
+
 # Для macOS
 brew install git zsh wget
 
@@ -44,7 +56,25 @@ touch ~/.zshrc
 ```bash
 chsh -s $(which zsh)
 ```
-3. Устанавливаем популярный фреймворк с открытым исходнам кодом 
+>Для NixOS, чтобы назначить zsh командной оболочкой по умолчанию,
+>добавляем несколько строчек в конфигурационный файл и делаем ребилд.
+```bash
+# Установка оболочки на уровне системы
+programs.zsh.enable = true;
+
+# Изменение оболочки для всех пользователей
+users.defaultUserShell = pkgs.zsh;
+
+# Изменение оболочки для конкретного пользователя
+users.users.<user_name> = {
+  shell = pkgs.zsh;
+  useDefaultShell = true;
+};
+
+# Ребилд
+sudo nixos-rebuild switch
+```
+3. Устанавливаем популярный плагин Oh My Zsh 
 для управления и улудшения конфигурации оболочки zsh:
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -66,7 +96,7 @@ chmod +x fonts_install.sh
 ```
 4. Запускаем его:
 ```bash
-./fonts_install.sh
+zsh ./fonts_install.sh
 ```
 5. Устанавливаем тему powerlevel10k:
 ```bash
