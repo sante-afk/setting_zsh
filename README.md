@@ -11,9 +11,8 @@ sudo apt update && sudo apt upgrade -y
 # For Fedora:
 sudo dnf update -y
 
-# For NixOS, go to the configuration file:
-cd /etc/nixos/
-nano configuration.nix
+# For NixOS:
+sudo nixos-rebuild switch --upgrade
 
 # For macOS, install Homebrew:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -31,7 +30,11 @@ sudo apt install -y git zsh wget
 # For Fedora:
 sudo dnf install -y git zsh wget
 
-# For NixOS, add a line and rebuild:
+# For NixOS, go to the config
+cd /etc/nixos/
+sudo nano configuration.nix
+
+# Add a line and rebuild:
 environment.systemPackages = with pkgs; [
 zsh
 ];
@@ -42,11 +45,11 @@ sudo nixos-rebuild switch
 # For macOS
 brew install git zsh wget
 
-# MacPorts (for older versions of macOS)
+# MacPorts (for older macOS versions)
 sudo port install git zsh wget
 ```
 
-## Setting up ZSH
+## Configuring ZSH
 1. Create a configuration file (if it was not created automatically):
 ```bash
 touch ~/.zshrc
@@ -58,13 +61,13 @@ chsh -s $(which zsh)
 >For NixOS, to set zsh as the default shell,
 >add a few lines to the configuration file and rebuild.
 ```bash
-# Set the shell at the system level
+# Setting the shell at the system level
 programs.zsh.enable = true;
 
-# Change the shell for all users
+# Changing the shell for all users
 users.defaultUserShell = pkgs.zsh;
 
-# Change the shell for a specific user
+# Changing the shell for a specific user
 users.users.<user_name> = {
 shell = pkgs.zsh;
 useDefaultShell = true;
@@ -72,6 +75,12 @@ useDefaultShell = true;
 
 # Rebuild
 sudo nixos-rebuild switch
+
+# Remove old builds
+sudo nix-collect-garbage --delete-old
+
+# Set the current version as default
+sudo /run/current-system/bin/switch-to-configuration boot
 ```
 3. Install the popular Oh My Zsh plugin
 to manage and improve the zsh shell configuration:
@@ -79,7 +88,7 @@ to manage and improve the zsh shell configuration:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-## Installing the Powerlevel10k theme
+## Install the Powerlevel10k theme
 1. Create a temporary directory for downloading files:
 ```bash
 cd ~/ && mkdir tmp && cd tmp
@@ -102,7 +111,7 @@ zsh ./fonts_install.sh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
-You need to edit the `~/.zshrc` file and replace the value of the `ZSH_THEME` key with:
+You need to edit the `~/.zshrc` file and replace the value of the `ZSH_THEME` key with :
 ```bash
 `ZSH_THEME="powerlevel10k/powerlevel10k"`
 ```

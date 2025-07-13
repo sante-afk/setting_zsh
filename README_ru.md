@@ -12,9 +12,8 @@ sudo apt update && sudo apt upgrade -y
 # Для Fedora:
 sudo dnf update -y
 
-# Для NixOS заходим в конфигурационный файл:
-cd /etc/nixos/
-nano configuration.nix
+# Для NixOS:
+sudo nixos-rebuild switch --upgrade
 
 # Для macOS устанавливаем Homebrew:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -32,7 +31,11 @@ sudo apt install -y git zsh wget
 # Для Fedora:
 sudo dnf install -y git zsh wget
 
-# Для NixOS добавьте строчку и выполните ребилд:
+# Для NixOS заходим в конфиг 
+cd /etc/nixos/
+sudo nano configuration.nix
+
+# Добавляем строчку и выполняем ребилд:
 environment.systemPackages = with pkgs; [
     zsh
 ];
@@ -73,6 +76,12 @@ users.users.<user_name> = {
 
 # Ребилд
 sudo nixos-rebuild switch
+
+# Удаление старых сборок
+sudo nix-collect-garbage  --delete-old
+
+# Ставим текущую версию по умолчанию
+sudo /run/current-system/bin/switch-to-configuration boot
 ```
 3. Устанавливаем популярный плагин Oh My Zsh 
 для управления и улудшения конфигурации оболочки zsh:
