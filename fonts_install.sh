@@ -10,7 +10,7 @@ declare -a fonts=(
 #    Hack
 #    Hermit
     JetBrainsMono
-#    Meslo
+    Meslo
     Noto
 #    Overpass
 #    ProggyClean
