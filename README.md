@@ -119,6 +119,5 @@ You need to edit the `~/.zshrc` file and replace the value of the `ZSH_THEME` ke
 Launch the editor:
 `nano ~/.zshrc`
 
-To save changes, press Ctrl + X, Ctrl + Y, then press Enter
-
-Restart the terminal
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=14&pause=1000&color=B8B8B8&width=435&lines=To+save+changes%2C+press+Ctrl+%2B+X;Ctrl+%2B+Y%2C+then+press+Enter)](https://git.io/typing-svg)  
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=14&pause=1000&color=B8B8B8&width=435&lines=Restart+the+terminal+.+.+.+.+.)](https://git.io/typing-svg)
