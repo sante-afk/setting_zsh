@@ -95,7 +95,7 @@ cd ~/ && mkdir tmp && cd tmp
 ```
 2. Clone the repository and enter it:
 ```bash
-git clone https://github.com/sshyta/setting_zsh.git
+git clone https://github.com/sante-afk/setting_zsh.git
 cd setting_zsh
 ```
 3. Give access rights to the file, making it executable:
